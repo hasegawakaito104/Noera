@@ -13,7 +13,7 @@ export function ProductSuggestions({ products }: { products: any[] }) {
     <div className="space-y-4 p-4">
       <h2 className="text-lg font-semibold">Recommended for You</h2>
       {products.map((product: any) => (
-        <div key={product.id} className="flex items-center space-x-4 border rounded-xl p-3 shadow">
+        <div key={product.id} className="flex items-center space-x-4 border rounded-2xl p-3 shadow-md fade-in">
           <div className="w-20 h-20 relative">
             <Image
               src={`/products/${product.image}`}

@@ -37,13 +37,13 @@ const mockProducts: Product[] = [
 
 export default function ProductPanel() {
   return (
-    <div className="h-full w-80 bg-gray-50 dark:bg-gray-800 border-l p-4 space-y-4 overflow-y-auto">
+    <div className="h-full w-full md:w-80 bg-gray-50 dark:bg-gray-800 border-l p-4 space-y-4 overflow-y-auto">
       <h2 className="text-lg font-semibold mb-2">Suggested Products</h2>
 
       {mockProducts.map((p) => (
         <div
           key={p.id}
-          className="border rounded-xl p-4 shadow-sm hover:shadow-md transition bg-white dark:bg-gray-700"
+          className="border rounded-2xl p-4 shadow-sm hover:shadow-md transition bg-white dark:bg-gray-700"
         >
           <div className="text-sm text-gray-500 dark:text-gray-300 mb-1">
             Type {p.type}
