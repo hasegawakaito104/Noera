@@ -18,7 +18,7 @@ export default function Sidebar() {
   }
 
   return (
-    <div className="h-full w-64 bg-gray-900 text-gray-100 border-r flex flex-col">
+    <div className="h-full w-full md:w-64 bg-gray-900 text-gray-100 border-r flex flex-col">
       <div className="p-4 border-b border-gray-700">
         <button
           onClick={handleNewThread}

@@ -94,7 +94,7 @@ export default function ChatArea({ messages }: { messages: any[] }) {
     <div className="flex flex-col h-full bg-gray-100 dark:bg-gray-900">
       <div className="flex-1 overflow-y-auto px-4 py-6 space-y-4 bg-white dark:bg-gray-800">
         {chatMessages.map((msg, index) => (
-          <ChatBubble key={index} from={msg.from} text={msg.text} />
+          <ChatBubble key={index} from={msg.from} text={msg.text} className="fade-in" />
         ))}
 
         {currentQuestionIndex < philosophyQuestions.length && (
@@ -104,7 +104,11 @@ export default function ChatArea({ messages }: { messages: any[] }) {
           />
         )}
 
-        {showProductSuggestions && <ProductSuggestions products={products} />}
+        {showProductSuggestions && (
+          <div className="fade-in">
+            <ProductSuggestions products={products} />
+          </div>
+        )}
 
         <div ref={chatEndRef} />
       </div>

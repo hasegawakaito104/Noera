@@ -56,10 +56,10 @@ export default function QuestionBlock({ question, onNext }: Props) {
         {question.options.map((opt) => (
           <div
             key={opt.id}
-            className={`border-2 rounded-xl p-2 cursor-pointer transition ${
+            className={`border-2 rounded-2xl p-2 cursor-pointer transition shadow ${
               selected.includes(opt.id)
                 ? 'border-blue-500'
-                : 'border-transparent'
+                : 'border-transparent hover:shadow-md'
             }`}
             onClick={() => toggleSelect(opt.id)}
           >
@@ -80,8 +80,8 @@ export default function QuestionBlock({ question, onNext }: Props) {
         <button
           disabled={selected.length === 0}
           onClick={handleNext}
-          className={`px-4 py-2 rounded-lg text-white transition ${
-            selected.length > 0 ? 'bg-blue-600' : 'bg-gray-400 cursor-not-allowed'
+          className={`px-4 py-2 rounded-full text-white transition ${
+            selected.length > 0 ? 'bg-blue-600 hover:bg-blue-700' : 'bg-gray-400 cursor-not-allowed'
           }`}
         >
           Next
