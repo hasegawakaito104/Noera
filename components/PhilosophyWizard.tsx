@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import Image from 'next/image'
-import { philosophyQuestions } from '@/lib/philosophyQuestions'
+import { philosophyQuestions } from '../lib/philosophyQuestions'
 
 
 interface ChatMessage {

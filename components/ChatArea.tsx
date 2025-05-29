@@ -1,14 +1,14 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { ChatBubble } from "@/components/ChatBubble";
-import { PhilosophyQuestion } from "@/components/PhilosophyQuestion";
-import { ProductSuggestions } from "@/components/ProductSuggestions";
-import { savePhilosophyTags } from "@/utils/savePhilosophyTags";
-import { matchProducts } from "@/utils/matchProducts";
-import { products } from "@/data/products";
-import { philosophyQuestions } from "@/lib/philosophyQuestions";
-import { getOrCreateUserId } from "@/utils/generateUserId";
+import { ChatBubble } from "./ChatBubble";
+import { PhilosophyQuestion } from "./PhilosophyQuestion";
+import { ProductSuggestions } from "./ProductSuggestions";
+import { savePhilosophyTags } from "../utils/savePhilosophyTags";
+import { matchProducts } from "../utils/matchProducts";
+import { products } from "../data/products";
+import { philosophyQuestions } from "../lib/philosophyQuestions";
+import { getOrCreateUserId } from "../utils/generateUserId";
 
 export default function ChatArea({ messages }: { messages: any[] }) {
   const [chatMessages, setChatMessages] = useState<any[]>([]);
@@ -91,40 +91,42 @@ export default function ChatArea({ messages }: { messages: any[] }) {
   }, [chatMessages]);
 
   return (
-    <div className="flex flex-col h-full overflow-y-auto px-4 py-6 space-y-4">
-      {chatMessages.map((msg, index) => (
-        <ChatBubble key={index} from={msg.from} text={msg.text} />
-      ))}
+    <div className="flex flex-col h-full bg-gray-100 dark:bg-gray-900">
+      <div className="flex-1 overflow-y-auto px-4 py-6 space-y-4 bg-white dark:bg-gray-800">
+        {chatMessages.map((msg, index) => (
+          <ChatBubble key={index} from={msg.from} text={msg.text} />
+        ))}
 
-      {currentQuestionIndex < philosophyQuestions.length && (
-        <PhilosophyQuestion
-          question={philosophyQuestions[currentQuestionIndex]}
-          onNext={handleSelection}
-        />
-      )}
+        {currentQuestionIndex < philosophyQuestions.length && (
+          <PhilosophyQuestion
+            question={philosophyQuestions[currentQuestionIndex]}
+            onNext={handleSelection}
+          />
+        )}
+
+        {showProductSuggestions && <ProductSuggestions products={products} />}
+
+        <div ref={chatEndRef} />
+      </div>
 
       {showChatInput && (
-        <div className="flex gap-2 items-center border-t pt-4">
+        <div className="border-t border-gray-300 dark:border-gray-700 p-4 flex gap-2 items-center bg-white dark:bg-gray-800">
           <input
             type="text"
-            className="flex-1 border px-3 py-2 rounded"
+            className="flex-1 border px-3 py-2 rounded bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100"
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            onKeyDown={(e) => e.key === "Enter" && handleSend()}
+            onKeyDown={(e) => e.key === 'Enter' && handleSend()}
             placeholder="Type your message..."
           />
           <button
             onClick={handleSend}
-            className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+            className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700"
           >
             Send
           </button>
         </div>
       )}
-
-      {showProductSuggestions && <ProductSuggestions products={products} />}
-
-      <div ref={chatEndRef} />
     </div>
   );
 }

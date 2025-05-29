@@ -18,11 +18,11 @@ export default function Sidebar() {
   }
 
   return (
-    <div className="h-full w-64 bg-gray-100 border-r flex flex-col">
-      <div className="p-4 border-b">
+    <div className="h-full w-64 bg-gray-900 text-gray-100 border-r flex flex-col">
+      <div className="p-4 border-b border-gray-700">
         <button
           onClick={handleNewThread}
-          className="w-full px-3 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+          className="w-full px-3 py-2 bg-green-600 text-white rounded hover:bg-green-700"
         >
           {'+ New Thread'}
         </button>
@@ -35,8 +35,8 @@ export default function Sidebar() {
             onClick={() => setActiveId(thread.id)}
             className={`px-4 py-2 cursor-pointer ${
               thread.id === activeId
-                ? 'bg-blue-100 text-blue-800 font-semibold'
-                : 'hover:bg-gray-200'
+                ? 'bg-gray-700 text-white font-semibold'
+                : 'hover:bg-gray-800'
             }`}
           >
             {thread.title}
